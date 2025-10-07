@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AYEDU - Learn, Share & Grow Together</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --accent-color: #20c997;
+            --purple-accent: #6f42c1;
+            --background-color: #f9f9f9;
+            --card-background: #ffffff;
+            --text-color: #333333;
+            --text-muted: #6c757d;
+            --border-color: #e9ecef;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --shadow-hover: 0 4px 20px rgba(0,0,0,0.15);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --background-color: #1a1a1a;
+            --card-background: #2d2d2d;
+            --text-color: #ffffff;
+            --text-muted: #b0b0b0;
+            --border-color: #404040;
+            --shadow: 0 2px 10px rgba(0,0,0,0.3);
+            --shadow-hover: 0 4px 20px rgba(0,0,0,0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        /* Header & Navigation */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 2px solid white;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: var(--card-background);
+            margin: 2rem 0;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Subject Cards */
+        .subjects-section {
+            margin: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-color);
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .subject-card {
+            background: var(--card-background);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .subject-card.et {
+            border-color: var(--primary-color);
+        }
+
+        .subject-card.sft {
+            border-color: var(--accent-color);
+        }
+
+        .subject-card.ict {
+            border-color: var(--purple-accent);
+        }
+
+        .subject-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .subject-card.et .subject-icon {
+            color: var(--primary-color);
+        }
+
+        .subject-card.sft .subject-icon {
+            color: var(--accent-color);
+        }
+
+        .subject-card.ict .subject-icon {
+            color: var(--purple-accent);
+        }
+
+        .subject-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .subject-card p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Subject Page */
+        .subject-page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .subject-page.active {
+            display: block;
+        }
+
+        .subject-header {
+            background: var(--card-background);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .subject-nav {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 0.5rem 1rem;
+            background: var(--card-background);
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text-color);
+        }
+
+        .category-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .search-upload-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 3rem;
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            background: var(--card-background);
+            color: var(--text-color);
+            font-size: 1rem;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        .upload-btn {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .upload-btn:hover {
+            background: #1ba085;
+        }
+
+        /* File Grid */
+        .files-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .file-card {
+            background: var(--card-background);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .file-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .file-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .file-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .file-info h4 {
+            color: var(--text-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .file-meta {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .file-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .file-actions .btn {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* Top Contributors */
+        .contributors-section {
+            background: var(--card-background);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin: 3rem 0;
+            box-shadow: var(--shadow);
+        }
+
+        .contributors-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .contributor-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--background-color);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .contributor-card:hover {
+            transform: scale(1.02);
+        }
+
+        .contributor-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--card-background);
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .footer-section a {
+            color: var(--text-muted);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary-color);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--shadow);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .search-upload-bar {
+                flex-direction: column;
+            }
+
+            .search-box {
+                min-width: 100%;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        /* Login Page */
+        .login-page {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100vh;
+            background: var(--background-color);
+        }
+
+        .login-page.active {
+            display: flex;
+        }
+
+        .login-container {
+            max-width: 400px;
+            margin: 2rem auto;
+            background: var(--card-background);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .login-header {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .login-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .login-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .login-header h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .login-header p {
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .login-form {
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--background-color);
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .password-group {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 0.25rem;
+            transition: var(--transition);
+        }
+
+        .password-toggle:hover {
+            color: var(--text-color);
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .remember-me input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .remember-me label {
+            margin: 0;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        .login-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            border: none;
+            padding: 0.875rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .forgot-password a {
+            color: #3b82f6;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 1.5rem 0;
+            position: relative;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--border-color);
+        }
+
+        .divider span {
+            background: var(--card-background);
+            padding: 0 1rem;
+        }
+
+        .social-login {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--card-background);
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .social-btn:hover {
+            border-color: var(--text-muted);
+            transform: translateY(-1px);
+        }
+
+        .social-btn.google:hover {
+            border-color: #db4437;
+            color: #db4437;
+        }
+
+        .social-btn.facebook:hover {
+            border-color: #4267B2;
+            color: #4267B2;
+        }
+
+        .signup-link {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .signup-link a {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
+        .back-to-home {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-to-home:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Login Page Footer */
+        .login-footer {
+            background: var(--card-background);
+            padding: 2rem 1rem 1rem;
+            border-top: 1px solid var(--border-color);
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .login-footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .login-footer-section h3 {
+            margin-bottom: 0.75rem;
+            color: var(--text-color);
+            font-size: 1rem;
+        }
+
+        .login-footer-section p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .login-footer-section a {
+            color: var(--text-muted);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .login-footer-section a:hover {
+            color: var(--primary-color);
+        }
+
+        .login-footer .social-links {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 0.75rem;
+        }
+
+        .login-footer .social-links a {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .login-footer .social-links a:hover {
+            transform: scale(1.1);
+        }
+
+        .login-footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="showHome()">
+                <i class="fas fa-graduation-cap"></i> AYEDU
+            </a>
+            <nav class="nav-menu" id="navMenu">
+                <li><a href="#" onclick="showHome()"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#" onclick="showSubject('et')"><i class="fas fa-cogs"></i> ET</a></li>
+                <li><a href="#" onclick="showSubject('sft')"><i class="fas fa-flask"></i> SFT</a></li>
+                <li><a href="#" onclick="showSubject('ict')"><i class="fas fa-computer"></i> ICT</a></li>
+                <li><a href="#" onclick="showLogin()"><i class="fas fa-user"></i> Login</a></li>
+            </nav>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark Mode">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Home Page -->
+        <div id="homePage" class="page">
+            <!-- Hero Section -->
+            <section class="hero fade-in">
+                <h1>Welcome to AYEDU</h1>
+                <p>Learn, Share & Grow Together</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary" onclick="showLogin()">
+                        <i class="fas fa-sign-in-alt"></i> Get Started
+                    </a>
+                    <a href="#subjects" class="btn btn-outline">
+                        <i class="fas fa-book"></i> Browse Subjects
+                    </a>
+                </div>
+            </section>
+
+            <!-- Subjects Section -->
+            <section class="subjects-section" id="subjects">
+                <h2 class="section-title">Choose Your Subject</h2>
+                <div class="subjects-grid">
+                    <div class="subject-card et fade-in" onclick="showSubject('et')">
+                        <div class="subject-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>Engineering Technology (ET)</h3>
+                        <p>Mechanical systems, electrical circuits, materials science, and engineering drawing resources.</p>
+                        <a href="#" class="btn btn-primary">
+                            <i class="fas fa-arrow-right"></i> Explore ET
+                        </a>
+                    </div>
+
+                    <div class="subject-card sft fade-in" onclick="showSubject('sft')">
+                        <div class="subject-icon">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <h3>Science for Technology (SFT)</h3>
+                        <p>Applied mathematics, physics, chemistry, and scientific principles for technology applications.</p>
+                        <a href="#" class="btn btn-primary">
+                            <i class="fas fa-arrow-right"></i> Explore SFT
+                        </a>
+                    </div>
+
+                    <div class="subject-card ict fade-in" onclick="showSubject('ict')">
+                        <div class="subject-icon">
+                            <i class="fas fa-computer"></i>
+                        </div>
+                        <h3>Information & Communication Technology (ICT)</h3>
+                        <p>Programming, databases, networks, cybersecurity, and digital communication systems.</p>
+                        <a href="#" class="btn btn-primary">
+                            <i class="fas fa-arrow-right"></i> Explore ICT
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Top Contributors -->
+            <section class="contributors-section fade-in">
+                <h2 class="section-title">Top Contributors</h2>
+                <div class="contributors-list">
+                    <div class="contributor-card">
+                        <div class="contributor-avatar">AS</div>
+                        <div>
+                            <h4>Amal Silva</h4>
+                            <p>156 uploads</p>
+                        </div>
+                    </div>
+                    <div class="contributor-card">
+                        <div class="contributor-avatar">NP</div>
+                        <div>
+                            <h4>Nimal Perera</h4>
+                            <p>142 uploads</p>
+                        </div>
+                    </div>
+                    <div class="contributor-card">
+                        <div class="contributor-avatar">KF</div>
+                        <div>
+                            <h4>Kamala Fernando</h4>
+                            <p>128 uploads</p>
+                        </div>
+                    </div>
+                    <div class="contributor-card">
+                        <div class="contributor-avatar">RJ</div>
+                        <div>
+                            <h4>Ruwan Jayasinghe</h4>
+                            <p>115 uploads</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Subject Pages -->
+        <div id="etPage" class="subject-page">
+            <div class="subject-header">
+                <h1><i class="fas fa-cogs"></i> Engineering Technology (ET)</h1>
+                <p>Comprehensive resources for engineering technology studies including mechanical systems, electrical circuits, and materials science.</p>
+            </div>
+
+            <div class="subject-nav">
+                <button class="category-btn active" onclick="filterCategory('et', 'all')">All</button>
+                <button class="category-btn" onclick="filterCategory('et', 'notes')">Notes</button>
+                <button class="category-btn" onclick="filterCategory('et', 'papers')">Past Papers</button>
+                <button class="category-btn" onclick="filterCategory('et', 'tutorials')">Tutorials</button>
+                <button class="category-btn" onclick="filterCategory('et', 'videos')">Videos</button>
+                <button class="category-btn" onclick="filterCategory('et', 'practical')">Practical Files</button>
+            </div>
+
+            <div class="search-upload-bar">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search ET resources..." onkeyup="searchFiles('et', this.value)">
+                </div>
+                <button class="upload-btn" onclick="showUpload('et')">
+                    <i class="fas fa-upload"></i> Upload File
+                </button>
+            </div>
+
+            <div class="files-grid" id="etFiles">
+                <!-- ET Files will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <div id="sftPage" class="subject-page">
+            <div class="subject-header">
+                <h1><i class="fas fa-flask"></i> Science for Technology (SFT)</h1>
+                <p>Applied mathematics, physics, chemistry, and scientific principles essential for technology applications.</p>
+            </div>
+
+            <div class="subject-nav">
+                <button class="category-btn active" onclick="filterCategory('sft', 'all')">All</button>
+                <button class="category-btn" onclick="filterCategory('sft', 'notes')">Notes</button>
+                <button class="category-btn" onclick="filterCategory('sft', 'papers')">Past Papers</button>
+                <button class="category-btn" onclick="filterCategory('sft', 'tutorials')">Tutorials</button>
+                <button class="category-btn" onclick="filterCategory('sft', 'videos')">Videos</button>
+                <button class="category-btn" onclick="filterCategory('sft', 'practical')">Practical Files</button>
+            </div>
+
+            <div class="search-upload-bar">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search SFT resources..." onkeyup="searchFiles('sft', this.value)">
+                </div>
+                <button class="upload-btn" onclick="showUpload('sft')">
+                    <i class="fas fa-upload"></i> Upload File
+                </button>
+            </div>
+
+            <div class="files-grid" id="sftFiles">
+                <!-- SFT Files will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <div id="ictPage" class="subject-page">
+            <div class="subject-header">
+                <h1><i class="fas fa-computer"></i> Information & Communication Technology (ICT)</h1>
+                <p>Programming, databases, networks, cybersecurity, and digital communication systems for the modern world.</p>
+            </div>
+
+            <div class="subject-nav">
+                <button class="category-btn active" onclick="filterCategory('ict', 'all')">All</button>
+                <button class="category-btn" onclick="filterCategory('ict', 'notes')">Notes</button>
+                <button class="category-btn" onclick="filterCategory('ict', 'papers')">Past Papers</button>
+                <button class="category-btn" onclick="filterCategory('ict', 'tutorials')">Tutorials</button>
+                <button class="category-btn" onclick="filterCategory('ict', 'videos')">Videos</button>
+                <button class="category-btn" onclick="filterCategory('ict', 'practical')">Practical Files</button>
+            </div>
+
+            <div class="search-upload-bar">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search ICT resources..." onkeyup="searchFiles('ict', this.value)">
+                </div>
+                <button class="upload-btn" onclick="showUpload('ict')">
+                    <i class="fas fa-upload"></i> Upload File
+                </button>
+            </div>
+
+            <div class="files-grid" id="ictFiles">
+                <!-- ICT Files will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-graduation-cap"></i> AYEDU</h3>
+                    <p>Empowering Sri Lankan A/L Technology students through collaborative learning and resource sharing.</p>
+                    <div class="social-links">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#" onclick="showHome()">Home</a>
+                    <a href="#" onclick="showSubject('et')">Engineering Technology</a>
+                    <a href="#" onclick="showSubject('sft')">Science for Technology</a>
+                    <a href="#" onclick="showSubject('ict')">ICT</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <a href="#">Help Center</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-envelope"></i> info@ayedu.lk</p>
+                    <p><i class="fas fa-phone"></i> +94 11 234 5678</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Colombo, Sri Lanka</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AYEDU. All rights reserved. Made with ❤️ for Sri Lankan students.</p>
+            </div>
+        </div>
+    </footer>
+
+        <!-- Login Page -->
+        <div id="loginPage" class="login-page">
+            <div class="login-container">
+                <button class="back-to-home" onclick="showHome()" title="Back to Home">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                
+                <div class="login-header">
+                    <div class="login-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h1>Welcome to AYEDU</h1>
+                    <p>Sign in to access educational resources</p>
+                </div>
+                
+                <div class="login-form">
+                    <form onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label for="username">
+                                <i class="fas fa-user"></i>
+                                Username or Email
+                            </label>
+                            <input 
+                                type="text" 
+                                id="username" 
+                                name="username" 
+                                placeholder="Enter your username or email"
+                                required
+                            >
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">
+                                <i class="fas fa-lock"></i>
+                                Password
+                            </label>
+                            <div class="password-group">
+                                <input 
+                                    type="password" 
+                                    id="password" 
+                                    name="password" 
+                                    placeholder="Enter your password"
+                                    required
+                                >
+                                <button type="button" class="password-toggle" onclick="togglePassword()">
+                                    <i class="fas fa-eye" id="passwordToggleIcon"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="remember-me">
+                            <input type="checkbox" id="remember" name="remember">
+                            <label for="remember">Remember me</label>
+                        </div>
+                        
+                        <button type="submit" class="login-btn">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Sign In
+                        </button>
+                    </form>
+                    
+                    <div class="forgot-password">
+                        <a href="#" onclick="showForgotPassword()">
+                            <i class="fas fa-question-circle"></i>
+                            Forgot your password?
+                        </a>
+                    </div>
+                    
+                    <div class="divider">
+                        <span>or</span>
+                    </div>
+                    
+                    <div class="social-login">
+                        <button class="social-btn google" onclick="socialLogin('google')">
+                            <i class="fab fa-google"></i>
+                            Continue with Google
+                        </button>
+                        <button class="social-btn facebook" onclick="socialLogin('facebook')">
+                            <i class="fab fa-facebook-f"></i>
+                            Continue with Facebook
+                        </button>
+                    </div>
+                    
+                    <div class="signup-link">
+                        Don't have an account? <a href="#" onclick="showSignup()">Sign up here</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Login Page Footer -->
+            <div class="login-footer">
+                <div class="login-footer-content">
+                    <div class="login-footer-section">
+                        <h3><i class="fas fa-graduation-cap"></i> AYEDU</h3>
+                        <p>Empowering Sri Lankan A/L Technology students through collaborative learning and resource sharing.</p>
+                        <div class="social-links">
+                            <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="login-footer-section">
+                        <h3>Quick Links</h3>
+                        <a href="#" onclick="showHome()">Home</a>
+                        <a href="#" onclick="showSubject('et')">Engineering Technology</a>
+                        <a href="#" onclick="showSubject('sft')">Science for Technology</a>
+                        <a href="#" onclick="showSubject('ict')">ICT</a>
+                    </div>
+                    <div class="login-footer-section">
+                        <h3>Support</h3>
+                        <a href="#">Help Center</a>
+                        <a href="#">Contact Us</a>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                    <div class="login-footer-section">
+                        <h3>Contact Info</h3>
+                        <p><i class="fas fa-envelope"></i> info@ayedu.lk</p>
+                        <p><i class="fas fa-phone"></i> +94 11 234 5678</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Colombo, Sri Lanka</p>
+                    </div>
+                </div>
+                <div class="login-footer-bottom">
+                    <p>&copy; 2025 AYEDU. All rights reserved. Made with ❤️ for Sri Lankan students.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample data
+        const sampleFiles = {
+            et: [
+                {
+                    title: "Mechanical Systems Fundamentals",
+                    category: "notes",
+                    type: "PDF",
+                    size: "2.3 MB",
+                    downloads: 245,
+                    author: "Prof. Silva",
+                    date: "2024-01-15",
+                    icon: "fas fa-file-pdf"
+                },
+                {
+                    title: "Electrical Circuits Past Paper 2023",
+                    category: "papers",
+                    type: "PDF",
+                    size: "1.8 MB",
+                    downloads: 189,
+                    author: "Exam Board",
+                    date: "2024-01-10",
+                    icon: "fas fa-file-alt"
+                },
+                {
+                    title: "CAD Tutorial - AutoCAD Basics",
+                    category: "tutorials",
+                    type: "PDF",
+                    size: "5.2 MB",
+                    downloads: 156,
+                    author: "Eng. Perera",
+                    date: "2024-01-08",
+                    icon: "fas fa-book"
+                },
+                {
+                    title: "Materials Testing Video Guide",
+                    category: "videos",
+                    type: "MP4",
+                    size: "45.6 MB",
+                    downloads: 134,
+                    author: "Dr. Fernando",
+                    date: "2024-01-05",
+                    icon: "fas fa-video"
+                },
+                {
+                    title: "Workshop Safety Practical",
+                    category: "practical",
+                    type: "DOCX",
+                    size: "1.2 MB",
+                    downloads: 98,
+                    author: "Tech. Jayasinghe",
+                    date: "2024-01-03",
+                    icon: "fas fa-file-word"
+                }
+            ],
+            sft: [
+                {
+                    title: "Applied Mathematics Notes",
+                    category: "notes",
+                    type: "PDF",
+                    size: "3.1 MB",
+                    downloads: 298,
+                    author: "Dr. Wickramasinghe",
+                    date: "2024-01-14",
+                    icon: "fas fa-file-pdf"
+                },
+                {
+                    title: "Physics Past Paper 2023",
+                    category: "papers",
+                    type: "PDF",
+                    size: "2.2 MB",
+                    downloads: 267,
+                    author: "Exam Board",
+                    date: "2024-01-12",
+                    icon: "fas fa-file-alt"
+                },
+                {
+                    title: "Chemistry Lab Experiments",
+                    category: "practical",
+                    type: "PDF",
+                    size: "4.5 MB",
+                    downloads: 178,
+                    author: "Prof. Rajapaksa",
+                    date: "2024-01-09",
+                    icon: "fas fa-flask"
+                },
+                {
+                    title: "Calculus Video Lectures",
+                    category: "videos",
+                    type: "MP4",
+                    size: "89.3 MB",
+                    downloads: 145,
+                    author: "Dr. Mendis",
+                    date: "2024-01-07",
+                    icon: "fas fa-video"
+                },
+                {
+                    title: "Statistics Tutorial Guide",
+                    category: "tutorials",
+                    type: "PDF",
+                    size: "2.8 MB",
+                    downloads: 123,
+                    author: "Prof. Gunasekara",
+                    date: "2024-01-04",
+                    icon: "fas fa-book"
+                }
+            ],
+            ict: [
+                {
+                    title: "Java Programming Complete Guide",
+                    category: "notes",
+                    type: "PDF",
+                    size: "6.7 MB",
+                    downloads: 456,
+                    author: "Mr. Bandara",
+                    date: "2024-01-16",
+                    icon: "fas fa-file-pdf"
+                },
+                {
+                    title: "Database Design Past Paper 2023",
+                    category: "papers",
+                    type: "PDF",
+                    size: "2.9 MB",
+                    downloads: 334,
+                    author: "Exam Board",
+                    date: "2024-01-13",
+                    icon: "fas fa-file-alt"
+                },
+                {
+                    title: "Web Development Tutorial",
+                    category: "tutorials",
+                    type: "PDF",
+                    size: "8.1 MB",
+                    downloads: 289,
+                    author: "Dev. Kumara",
+                    date: "2024-01-11",
+                    icon: "fas fa-book"
+                },
+                {
+                    title: "Network Security Video Course",
+                    category: "videos",
+                    type: "MP4",
+                    size: "156.8 MB",
+                    downloads: 234,
+                    author: "Cyber Expert",
+                    date: "2024-01-08",
+                    icon: "fas fa-video"
+                },
+                {
+                    title: "Python Project Files",
+                    category: "practical",
+                    type: "ZIP",
+                    size: "12.4 MB",
+                    downloads: 198,
+                    author: "Code Master",
+                    date: "2024-01-06",
+                    icon: "fas fa-file-archive"
+                }
+            ]
+        };
+
+        let currentSubject = '';
+        let currentCategory = 'all';
+
+        // Theme toggle
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('themeIcon');
+            
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                themeIcon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Load saved theme
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const themeIcon = document.getElementById('themeIcon');
+            
+            if (savedTheme === 'dark') {
+                document.body.setAttribute('data-theme', 'dark');
+                themeIcon.className = 'fas fa-sun';
+            }
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Navigation functions
+        function showHome() {
+            hideAllPages();
+            document.getElementById('homePage').style.display = 'block';
+            updateActiveNav('home');
+        }
+
+        function showSubject(subject) {
+            hideAllPages();
+            document.getElementById(subject + 'Page').classList.add('active');
+            currentSubject = subject;
+            currentCategory = 'all';
+            renderFiles(subject);
+            updateActiveNav(subject);
+        }
+
+        function showLogin() {
+            hideAllPages();
+            document.getElementById('loginPage').classList.add('active');
+            updateActiveNav('login');
+        }
+
+        function hideAllPages() {
+            document.getElementById('homePage').style.display = 'none';
+            document.getElementById('loginPage').classList.remove('active');
+            document.querySelectorAll('.subject-page').forEach(page => {
+                page.classList.remove('active');
+            });
+        }
+
+        function updateActiveNav(page) {
+            // This would update navigation active states in a full implementation
+        }
+
+        // File rendering
+        function renderFiles(subject, category = 'all', searchTerm = '') {
+            const container = document.getElementById(subject + 'Files');
+            const files = sampleFiles[subject] || [];
+            
+            let filteredFiles = files;
+            
+            if (category !== 'all') {
+                filteredFiles = files.filter(file => file.category === category);
+            }
+            
+            if (searchTerm) {
+                filteredFiles = filteredFiles.filter(file => 
+                    file.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    file.author.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+            }
+            
+            container.innerHTML = filteredFiles.map(file => `
+                <div class="file-card fade-in">
+                    <div class="file-header">
+                        <i class="${file.icon}"></i>
+                        <div class="file-info">
+                            <h4>${file.title}</h4>
+                            <div class="file-meta">
+                                ${file.type} • ${file.size} • ${file.downloads} downloads
+                                <br>By ${file.author} • ${file.date}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-actions">
+                        <button class="btn btn-primary" onclick="downloadFile('${file.title}')">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                        <button class="btn btn-outline" onclick="previewFile('${file.title}')">
+                            <i class="fas fa-eye"></i> Preview
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Category filtering
+        function filterCategory(subject, category) {
+            currentCategory = category;
+            
+            // Update active button
+            const buttons = document.querySelectorAll(`#${subject}Page .category-btn`);
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            renderFiles(subject, category);
+        }
+
+        // Search functionality
+        function searchFiles(subject, searchTerm) {
+            renderFiles(subject, currentCategory, searchTerm);
+        }
+
+        // File actions
+        function downloadFile(filename) {
+            alert(`Downloading: ${filename}\n\nIn a real implementation, this would start the file download.`);
+        }
+
+        function previewFile(filename) {
+            alert(`Previewing: ${filename}\n\nIn a real implementation, this would open a file preview modal.`);
+        }
+
+        function showUpload(subject) {
+            alert(`Upload to ${subject.toUpperCase()}\n\nIn a real implementation, this would open an upload form with:\n- File selection\n- Category selection\n- Title and description\n- Tags and metadata`);
+        }
+
+        // Login page functions
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.getElementById('passwordToggleIcon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.className = 'fas fa-eye-slash';
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.className = 'fas fa-eye';
+            }
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const remember = document.getElementById('remember').checked;
+            
+            alert(`Login attempt for: ${username}\n\nIn a real implementation, this would authenticate the user and redirect to the dashboard.`);
+            
+            // Simulate successful login and redirect to home
+            showHome();
+        }
+
+        function showForgotPassword() {
+            const email = prompt('Enter your email address to reset your password:');
+            if (email) {
+                alert(`Password reset link has been sent to ${email}\n\nIn a real implementation, this would send an actual email.`);
+            }
+        }
+
+        function socialLogin(provider) {
+            alert(`${provider.charAt(0).toUpperCase() + provider.slice(1)} login would be implemented here.\n\nThis would integrate with ${provider} OAuth API.`);
+        }
+
+        function showSignup() {
+            alert('Signup functionality would be implemented here.\n\nThis would include:\n- Registration form\n- Email verification\n- Profile setup\n- Terms acceptance');
+        }
+
+        // Initialize the application
+        function init() {
+            loadTheme();
+            showLogin(); // Changed from showHome() to showLogin()
+            
+            // Add fade-in animation to elements
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach((el, index) => {
+                    setTimeout(() => {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }, index * 100);
+                });
+            }, 100);
+        }
+
+
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
+
