@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +16,11 @@
             scroll-behavior: smooth;
         }
 
-        h1, h2, h3, h4, .serif-font {
+        h1,
+        h2,
+        h3,
+        h4,
+        .serif-font {
             font-family: 'Abhaya+Libre', serif;
         }
 
@@ -29,7 +34,7 @@
             justify-content: center;
             text-align: center;
             color: white;
-            perspective: 1000px; 
+            perspective: 1000px;
         }
 
         .hero-bg {
@@ -37,12 +42,12 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 120%; 
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEia8-oVhWCzmICi5L9fq3k50CPej5lLyKgybln2HeWN0WbETj8PYDxQW87bLGo4CqRX_W04p6EH3EFOzxtd7hCuATfUgYphx2d1rOntqYfPS-gVvVSzjI7Stwx_NXLKLZP-QEpnO0IHHiePbJFIBH3JHrkYrL9bxMB8I1R-UFmHzahbnApNPVJfD1DVxhuj/s400/orange.gif');
+            height: 120%;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEia8-oVhWCzmICi5L9fq3k50CPej5lLyKgybln2HeWN0WbETj8PYDxQW87bLGo4CqRX_W04p6EH3EFOzxtd7hCuATfUgYphx2d1rOntqYfPS-gVvVSzjI7Stwx_NXLKLZP-QEpnO0IHHiePbJFIBH3JHrkYrL9bxMB8I1R-UFmHzahbnApNPVJfD1DVxhuj/s400/orange.gif');
             background-size: cover;
             background-position: center;
             z-index: -1;
-            will-change: transform; 
+            will-change: transform;
             transform-origin: center center;
         }
 
@@ -53,10 +58,17 @@
 
         /* Modal Animation */
         @keyframes modalIn {
-            from { opacity: 0; transform: scale(0.95) translateY(20px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
         }
-        
+
         .modal-content {
             animation: modalIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
@@ -71,13 +83,14 @@
         }
     </style>
 </head>
+
 <body class="bg-orange-50 text-gray-800">
 
     <!-- Navigation -->
     <nav class="fixed w-full z-40 bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="text-3xl font-bold text-orange-600 serif-font tracking-wide">Natura</div>
-            
+
             <div class="hidden md:flex items-center space-x-8 text-lg font-medium text-gray-700">
                 <a href="#home" class="hover:text-orange-500 transition" data-i18n="nav_home">Home</a>
                 <a href="#products" class="hover:text-orange-500 transition" data-i18n="nav_products">Products</a>
@@ -86,12 +99,14 @@
             </div>
 
             <div class="flex items-center gap-4">
-                <button onclick="toggleLanguage()" class="flex items-center gap-2 px-3 py-1 rounded-full border border-orange-200 hover:bg-orange-50 transition text-sm font-semibold">
+                <button onclick="toggleLanguage()"
+                    class="flex items-center gap-2 px-3 py-1 rounded-full border border-orange-200 hover:bg-orange-50 transition text-sm font-semibold">
                     <i class="ph ph-translate text-lg text-orange-600"></i>
                     <span id="lang-text">SI</span>
                 </button>
-                
-                <button class="bg-orange-500 text-white px-6 py-2 rounded-full font-bold hover:bg-orange-600 transition shadow-lg">
+
+                <button
+                    class="bg-orange-500 text-white px-6 py-2 rounded-full font-bold hover:bg-orange-600 transition shadow-lg">
                     <span data-i18n="nav_order">Order Now</span>
                 </button>
             </div>
@@ -102,9 +117,12 @@
     <section id="home" class="hero-section">
         <div class="hero-bg" id="hero-bg-element"></div>
         <div class="px-4 relative z-10" id="hero-content">
-            <h1 class="text-5xl md:text-8xl font-bold mb-6 drop-shadow-xl" data-i18n="hero_title">Natura Orange Juice</h1>
-            <p class="text-xl md:text-2xl mb-10 max-w-2xl mx-auto drop-shadow-md font-light text-white/90" data-i18n="hero_subtitle">100% Natural Orange Juice - No Chemicals Added.</p>
-            <a href="#products" class="bg-white text-orange-600 px-10 py-4 rounded-full text-xl font-bold hover:bg-orange-50 transition shadow-xl transform hover:scale-105 inline-block">
+            <h1 class="text-5xl md:text-8xl font-bold mb-6 drop-shadow-xl" data-i18n="hero_title">Natura Orange Juice
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-2xl mx-auto drop-shadow-md font-light text-white/90"
+                data-i18n="hero_subtitle">100% Natural Orange Juice - No Chemicals Added.</p>
+            <a href="#products"
+                class="bg-white text-orange-600 px-10 py-4 rounded-full text-xl font-bold hover:bg-orange-50 transition shadow-xl transform hover:scale-105 inline-block">
                 <span data-i18n="hero_cta">Explore Now</span>
             </a>
         </div>
@@ -116,17 +134,20 @@
             <div class="p-8 bg-white rounded-3xl shadow-lg orange-card border border-orange-100">
                 <div class="text-6xl mb-6">🍊</div>
                 <h3 class="text-2xl font-bold text-orange-800 mb-3" data-i18n="feat_fresh_title">Fresh Fruits</h3>
-                <p class="text-gray-600 leading-relaxed" data-i18n="feat_fresh_desc">We use only fresh oranges harvested directly from the farm.</p>
+                <p class="text-gray-600 leading-relaxed" data-i18n="feat_fresh_desc">We use only fresh oranges harvested
+                    directly from the farm.</p>
             </div>
             <div class="p-8 bg-white rounded-3xl shadow-lg orange-card border border-orange-100">
                 <div class="text-6xl mb-6">🌿</div>
                 <h3 class="text-2xl font-bold text-orange-800 mb-3" data-i18n="feat_natural_title">100% Natural</h3>
-                <p class="text-gray-600 leading-relaxed" data-i18n="feat_natural_desc">Contains no added sugar or artificial flavors.</p>
+                <p class="text-gray-600 leading-relaxed" data-i18n="feat_natural_desc">Contains no added sugar or
+                    artificial flavors.</p>
             </div>
             <div class="p-8 bg-white rounded-3xl shadow-lg orange-card border border-orange-100">
                 <div class="text-6xl mb-6">⚡</div>
                 <h3 class="text-2xl font-bold text-orange-800 mb-3" data-i18n="feat_energy_title">Vitality</h3>
-                <p class="text-gray-600 leading-relaxed" data-i18n="feat_energy_desc">Rich in Vitamin C to keep you energized all day long.</p>
+                <p class="text-gray-600 leading-relaxed" data-i18n="feat_energy_desc">Rich in Vitamin C to keep you
+                    energized all day long.</p>
             </div>
         </div>
     </section>
@@ -134,54 +155,73 @@
     <!-- Products Section -->
     <section id="products" class="py-20 bg-orange-100/50">
         <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-5xl font-bold text-center text-orange-900 mb-16" data-i18n="prod_title">Our Product Range</h2>
+            <h2 class="text-5xl font-bold text-center text-orange-900 mb-16" data-i18n="prod_title">Our Product Range
+            </h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 <!-- Product 1 -->
-                <div class="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group">
+                <div
+                    class="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group">
                     <div class="h-72 bg-orange-200/50 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?q=80&w=600&auto=format&fit=crop" alt="Classic Orange Juice" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <img src="https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?q=80&w=600&auto=format&fit=crop"
+                            alt="Classic Orange Juice"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                         <div class="absolute inset-0 bg-black/10"></div>
                     </div>
                     <div class="p-8">
                         <h4 class="text-2xl font-bold mb-2 text-gray-800">Classic Orange - 250ml</h4>
-                        <p class="text-gray-500 mb-6 text-sm" data-i18n="prod_1_desc">Small bottle - Perfect for travel and quick refreshment.</p>
+                        <p class="text-gray-500 mb-6 text-sm" data-i18n="prod_1_desc">Small bottle - Perfect for travel
+                            and quick refreshment.</p>
                         <div class="flex justify-between items-center">
                             <span class="text-orange-600 font-bold text-2xl">Rs. 250.00</span>
-                            <button onclick="openModal('Classic Orange - 250ml', 250, 'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?q=80&w=600&auto=format&fit=crop', 'prod_1_modal_desc')" class="bg-gray-900 text-white px-6 py-2 rounded-xl hover:bg-orange-600 transition flex items-center gap-2">
+                            <button
+                                onclick="openModal('Classic Orange - 250ml', 250, 'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?q=80&w=600&auto=format&fit=crop', 'prod_1_modal_desc')"
+                                class="bg-gray-900 text-white px-6 py-2 rounded-xl hover:bg-orange-600 transition flex items-center gap-2">
                                 <i class="ph ph-shopping-bag"></i> <span data-i18n="btn_buy">Buy</span>
                             </button>
                         </div>
                     </div>
                 </div>
                 <!-- Product 2 -->
-                <div class="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group transform md:-translate-y-4">
+                <div
+                    class="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group transform md:-translate-y-4">
                     <div class="h-72 bg-orange-300/50 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=600&auto=format&fit=crop" alt="Family Pack Orange Juice" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <img src="https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=600&auto=format&fit=crop"
+                            alt="Family Pack Orange Juice"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                         <div class="absolute inset-0 bg-black/10"></div>
                     </div>
                     <div class="p-8">
                         <h4 class="text-2xl font-bold mb-2 text-gray-800">Family Pack - 1L</h4>
-                        <p class="text-gray-500 mb-6 text-sm" data-i18n="prod_2_desc">Large bottle for the whole family to enjoy.</p>
+                        <p class="text-gray-500 mb-6 text-sm" data-i18n="prod_2_desc">Large bottle for the whole family
+                            to enjoy.</p>
                         <div class="flex justify-between items-center">
                             <span class="text-orange-600 font-bold text-2xl">Rs. 850.00</span>
-                            <button onclick="openModal('Family Pack - 1L', 850, 'https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=600&auto=format&fit=crop', 'prod_2_modal_desc')" class="bg-orange-500 text-white px-6 py-2 rounded-xl hover:bg-orange-600 transition shadow-lg">
+                            <button
+                                onclick="openModal('Family Pack - 1L', 850, 'https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=600&auto=format&fit=crop', 'prod_2_modal_desc')"
+                                class="bg-orange-500 text-white px-6 py-2 rounded-xl hover:bg-orange-600 transition shadow-lg">
                                 <i class="ph ph-shopping-bag"></i> <span data-i18n="btn_buy">Buy</span>
                             </button>
                         </div>
                     </div>
                 </div>
                 <!-- Product 3 -->
-                <div class="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group">
+                <div
+                    class="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group">
                     <div class="h-72 bg-yellow-200/50 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?q=80&w=600&auto=format&fit=crop" alt="Orange and Honey Juice" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?q=80&w=600&auto=format&fit=crop"
+                            alt="Orange and Honey Juice"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                         <div class="absolute inset-0 bg-black/10"></div>
                     </div>
                     <div class="p-8">
                         <h4 class="text-2xl font-bold mb-2 text-gray-800">Orange & Honey - 500ml</h4>
-                        <p class="text-gray-500 mb-6 text-sm" data-i18n="prod_3_desc">Special taste blended with pure honey.</p>
+                        <p class="text-gray-500 mb-6 text-sm" data-i18n="prod_3_desc">Special taste blended with pure
+                            honey.</p>
                         <div class="flex justify-between items-center">
                             <span class="text-orange-600 font-bold text-2xl">Rs. 550.00</span>
-                            <button onclick="openModal('Orange & Honey - 500ml', 550, 'https://images.unsplash.com/photo-1600271886742-f049cd451bba?q=80&w=600&auto=format&fit=crop', 'prod_3_modal_desc')" class="bg-gray-900 text-white px-6 py-2 rounded-xl hover:bg-orange-600 transition flex items-center gap-2">
+                            <button
+                                onclick="openModal('Orange & Honey - 500ml', 550, 'https://images.unsplash.com/photo-1600271886742-f049cd451bba?q=80&w=600&auto=format&fit=crop', 'prod_3_modal_desc')"
+                                class="bg-gray-900 text-white px-6 py-2 rounded-xl hover:bg-orange-600 transition flex items-center gap-2">
                                 <i class="ph ph-shopping-bag"></i> <span data-i18n="btn_buy">Buy</span>
                             </button>
                         </div>
@@ -193,50 +233,65 @@
 
     <!-- PRODUCT POPUP MODAL -->
     <div id="productModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+        <!-- Backdrop -->
         <div class="absolute inset-0 bg-black/60 backdrop-blur-custom" onclick="closeModal()"></div>
-        
-        <div class="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden modal-content flex flex-col md:flex-row">
-            <button onclick="closeModal()" class="absolute top-4 right-4 z-10 w-10 h-10 bg-white/50 hover:bg-white rounded-full flex items-center justify-center backdrop-blur-md">
-                <i class="ph ph-x text-xl"></i>
+
+        <!-- Modal Content -->
+        <div
+            class="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden modal-content flex flex-col md:flex-row max-h-[90vh] md:max-h-none overflow-y-auto md:overflow-visible">
+
+            <!-- Close Button -->
+            <button onclick="closeModal()"
+                class="absolute top-4 right-4 z-20 w-10 h-10 bg-white/80 hover:bg-white rounded-full flex items-center justify-center backdrop-blur-md shadow-md transition">
+                <i class="ph ph-x text-xl font-bold text-gray-800"></i>
             </button>
 
-            <div class="w-full md:w-1/2 bg-orange-50 relative">
+            <!-- Image Section (Fixed height on mobile to save space) -->
+            <div class="w-full md:w-1/2 bg-orange-50 relative h-52 md:h-auto flex-shrink-0">
                 <img id="modal-img" src="" alt="Product" class="w-full h-full object-cover">
             </div>
 
-            <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-between bg-white">
+            <!-- Details Section -->
+            <div class="w-full md:w-1/2 p-6 md:p-12 flex flex-col justify-between bg-white">
                 <div>
-                    <h2 id="modal-title" class="text-3xl md:text-4xl font-bold text-gray-900 mb-2 serif-font">Product Name</h2>
-                    <p id="modal-desc" class="text-gray-600 mb-6">Description goes here.</p>
+                    <h2 id="modal-title" class="text-2xl md:text-4xl font-bold text-gray-900 mb-2 serif-font">Product
+                        Name</h2>
+                    <p id="modal-desc" class="text-gray-600 mb-6 text-sm md:text-base">Description goes here.</p>
 
-                    <div class="bg-orange-50 p-4 rounded-2xl mb-8">
+                    <div class="bg-orange-50 p-4 rounded-2xl mb-6 md:mb-8">
                         <div class="flex justify-between items-center mb-1">
                             <span class="text-gray-500 text-sm">Unit Price</span>
                             <span class="font-semibold text-gray-800" id="unit-price-display">Rs. 0.00</span>
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-gray-800 font-bold text-lg">Total Amount</span>
-                            <span class="text-orange-600 font-extrabold text-2xl" id="total-price-display">Rs. 0.00</span>
+                            <span class="text-orange-600 font-extrabold text-2xl" id="total-price-display">Rs.
+                                0.00</span>
                         </div>
                     </div>
 
                     <div class="flex items-center gap-6 mb-8">
                         <span class="font-bold text-gray-700">Quantity</span>
                         <div class="flex items-center bg-gray-100 rounded-xl p-1">
-                            <button onclick="updateQty(-1)" class="w-10 h-10 flex items-center justify-center bg-white rounded-lg shadow-sm hover:text-orange-500 transition font-bold">-</button>
+                            <button onclick="updateQty(-1)"
+                                class="w-10 h-10 flex items-center justify-center bg-white rounded-lg shadow-sm hover:text-orange-500 transition font-bold text-lg">-</button>
                             <span id="qty-display" class="w-12 text-center font-bold text-xl text-gray-800">1</span>
-                            <button onclick="updateQty(1)" class="w-10 h-10 flex items-center justify-center bg-white rounded-lg shadow-sm hover:text-orange-500 transition font-bold">+</button>
+                            <button onclick="updateQty(1)"
+                                class="w-10 h-10 flex items-center justify-center bg-white rounded-lg shadow-sm hover:text-orange-500 transition font-bold text-lg">+</button>
                         </div>
                     </div>
                 </div>
 
                 <div class="flex flex-col gap-3">
-                    <button class="w-full bg-orange-600 text-white py-4 rounded-2xl font-bold hover:bg-orange-700 transition flex items-center justify-center gap-2 text-lg">
+                    <button
+                        class="w-full bg-orange-600 text-white py-3 md:py-4 rounded-2xl font-bold hover:bg-orange-700 transition flex items-center justify-center gap-2 text-lg">
                         <i class="ph ph-shopping-cart text-xl"></i> <span data-i18n="modal_add_cart">Add to Cart</span>
                     </button>
                     <!-- WhatsApp Order Button -->
-                    <button onclick="sendOrder()" class="w-full bg-green-600 text-white py-4 rounded-2xl font-bold hover:bg-green-700 transition flex items-center justify-center gap-2 text-lg shadow-lg">
-                        <i class="ph ph-whatsapp-logo text-2xl"></i> <span data-i18n="modal_buy_now">Buy via WhatsApp</span>
+                    <button onclick="sendOrder()"
+                        class="w-full bg-green-600 text-white py-3 md:py-4 rounded-2xl font-bold hover:bg-green-700 transition flex items-center justify-center gap-2 text-lg shadow-lg">
+                        <i class="ph ph-whatsapp-logo text-2xl"></i> <span data-i18n="modal_buy_now">Buy via
+                            WhatsApp</span>
                     </button>
                 </div>
             </div>
@@ -291,17 +346,17 @@
             basePrice = price;
             currentQty = 1;
             selectedProduct = title;
-            
+
             document.getElementById('modal-title').innerText = title;
             document.getElementById('modal-img').src = imgSrc;
             document.getElementById('unit-price-display').innerText = `Rs. ${basePrice}.00`;
-            
+
             const desc = translations[currentLang][descKey] || translations['en'][descKey];
             document.getElementById('modal-desc').innerText = desc;
             document.getElementById('modal-desc').setAttribute('data-i18n', descKey);
-            
+
             updatePriceDisplay();
-            
+
             document.getElementById('productModal').classList.remove('hidden');
             document.getElementById('productModal').classList.add('flex');
             document.body.style.overflow = 'hidden';
@@ -328,26 +383,26 @@
         function sendOrder() {
             const phoneNumber = "94705012748";
             const totalAmount = basePrice * currentQty;
-            
+
             const message = `අලුත් ඇණවුමක්! 🍊\n\n` +
-                            `නිෂ්පාදනයේ නම: ${selectedProduct}\n` +
-                            `අවශ්‍ය ප්‍රමාණය: ${currentQty}\n` +
-                            `මුළු මුදල: Rs. ${totalAmount.toLocaleString()}.00\n\n` +
-                            `කරුණාකර මෙය තහවුරු කරන්න. ස්තූතියි!`;
+                `නිෂ්පාදනයේ නම: ${selectedProduct}\n` +
+                `අවශ්‍ය ප්‍රමාණය: ${currentQty}\n` +
+                `මුළු මුදල: Rs. ${totalAmount.toLocaleString()}.00\n\n` +
+                `කරුණාකර මෙය තහවුරු කරන්න. ස්තූතියි!`;
 
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         }
 
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const scroll = window.pageYOffset;
             if (scroll < window.innerHeight) {
                 const scale = 1 + (scroll * 0.0005);
                 const y = scroll * 0.5;
                 const bg = document.getElementById('hero-bg-element');
-                if(bg) bg.style.transform = `translate3d(0, ${y}px, 0) scale(${scale})`;
+                if (bg) bg.style.transform = `translate3d(0, ${y}px, 0) scale(${scale})`;
                 const content = document.getElementById('hero-content');
-                if(content) {
+                if (content) {
                     content.style.transform = `translateY(${scroll * 0.3}px)`;
                     content.style.opacity = 1 - (scroll / 700);
                 }
@@ -355,4 +410,5 @@
         });
     </script>
 </body>
+
 </html>
